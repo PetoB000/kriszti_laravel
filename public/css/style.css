@@ -1,0 +1,15 @@
+.navbar-brand img {
+    width: 300px;
+    transform: translateY(40px);
+}
+
+.navbar-nav {
+    --bs-nav-link-padding-y: 0rem;
+
+}
+
+.nav-item a {
+    font-size: 12px;
+}
+
+
