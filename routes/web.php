@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RouteController::class, 'index']);
 
-Route::get('/Rolam', [RouteController::class, 'about']);
+Route::get('/Rólam', [RouteController::class, 'about']);
 
-Route::get('/Vasarlas_menete', [RouteController::class, 'how_to_buy']);
+Route::get('/Vásárlás_menete', [RouteController::class, 'how_to_buy']);
 
 Route::get('/Kapcsolat', [RouteController::class, 'contact']);
 
-Route::get('/Kategoria', [RouteController::class, 'category']);
+Route::get('/Kategória{name}', [RouteController::class, 'category']);
 
-Route::get('/Kategoria/{id}', [RouteController::class, 'product']);
+Route::get('/Kategoria/{name}/{productName}', [RouteController::class, 'product']);

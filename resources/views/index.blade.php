@@ -1,6 +1,5 @@
 <x-layout>
     <x-slot:css>
-        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/index.css">
     </x-slot:css>
     <x-slot:main>
@@ -14,7 +13,7 @@
                     <img src="img/about_me_img.JPG" alt="Profile Image" id="about_img" class="rounded me-2 w-25" >
                     <div class="mt-4 card_body justify-content-center align-items-center d-flex flex-column">
                         <h5 class="card-title fs-3 d-flex justify-content-center ">ISMERJ MEG</h5>
-                        <p class="card-text d-flex fs-5 text-center ">
+                        <p class="card-text d-flex  text-center ">
                             Szia! Örülök, hogy itt vagy! Petőné Birta Krisztina vagyok, 2 csodálatos gyerek édesanyja,
                             és egy mindenben támogató férj felesége, sok szeretettel köszöntelek az oldalamon.
                         </p>
@@ -31,7 +30,7 @@
 
     {{-- CATEGORY SECTION --}}
 
-    <div class="container  mt-3">
+    <div class="container-fluid px-lg-5  mt-3">
 
         <div class="row">
             <div class="col d-flex justify-content-center my-4">
@@ -40,7 +39,7 @@
         </div>
 
 
-        <div class="row  d-flex row-cols-2 row-cols-sm-3 row-cols-lg-5 justify-content-center">
+        <div class="row px-lg-5 d-flex row-cols-2 row-cols-sm-3 row-cols-lg-5 justify-content-center">
             @for ($i = 0; $i < count($sortedCategories); $i += 2)
                 <div class="d-flex col mb-1 p-1 category_container position-relative">
                     <div class="position-relative h-100 w-100 category">
@@ -88,7 +87,7 @@
         <button id="prev-slide" class="slide-button material-symbols-rounded">
           <img src="./img/icons/White_Double_Arrow_To_Up_Icon_Transparent_PNG-removebg-preview(1).svg" alt="">
         </button>
-        <ul class="image-list">
+        <ul class="image-list p-0">
             @foreach ($galleryImages as $image)
                 <li>
                     <img class="image-item"  src="{{ asset($image['path']) }}" alt="Galéria kép" 
@@ -134,7 +133,6 @@
 
     </x-slot:main>
     <x-slot:javaScript>
-        <script src="js/main.js"></script>
         <script src="js/index.js"></script>
     </x-slot:javaScript>
 </x-layout>

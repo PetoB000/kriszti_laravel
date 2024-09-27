@@ -3,6 +3,7 @@ const initSlider = () => {
     const slideButtons = document.querySelectorAll(
         ".slider-wrapper .slide-button"
     );
+    
     const sliderScrollbar = document.querySelector(
         ".slider-container .slider-scrollbar"
     );
@@ -53,6 +54,13 @@ const initSlider = () => {
             imageList.scrollLeft <= 0 ? "none" : "flex";
         slideButtons[1].style.display =
             imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+            let windowWidth = window.innerWidth;
+        if (windowWidth  < 1130) {
+          slideButtons.forEach(button => {
+            button.style.display = "none"
+
+        });
+    }
     };
 
     const updateScrollThumbPosition = () => {
@@ -70,6 +78,8 @@ const initSlider = () => {
 
     handleSlideButtons();
     updateScrollThumbPosition();
+
+
 };
 
 const images = [];
@@ -98,15 +108,5 @@ document.getElementById("nextImage").addEventListener("click", function () {
 });
 
 
-window.addEventListener('resize', function() {
-    let windowWidth = window.innerWidth;
-    if (windowWidth  < 1130) {
-      slideButtons.forEach(button => {
-        button.style.display = "none"
-        
-      });
-    }
-
-});
 
 window.addEventListener("load", initSlider);

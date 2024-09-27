@@ -12,7 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="website icon" type="png"
         href="./img/purple-epoxy-resin-icon-cartoon-circle-vector-45522988-removebg.png">
-
+    <link rel="stylesheet" href="css/style.css">
     {{ $css }}
 </head>
 
@@ -24,9 +24,9 @@
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 " onclick="relocateTo('/')">
             Főoldal</div>
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 "
-            onclick="relocateTo('/Rolam')">Rólam</div>
+            onclick="relocateTo('/Rólam')">Rólam</div>
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 "
-            onclick="relocateTo('/Vasarlas_menete')">Vásárlás menete</div>
+            onclick="relocateTo('/Vásárlás_menete')">Vásárlás menete</div>
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 "
             onclick="relocateTo('/Kapcsolat')">Kapcsolat</div>
         <div class="dropdown">
@@ -41,12 +41,13 @@
                     <a href="" class="text-black">{{ $category['name'] }}</a></li>
             @endforeach
         </ul>
-        <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0">0</div>
-        <div class="ms-3 me-5 basket border border-black  p-2 border-2" id="basket-icon">
+
+        <div class="ms-3 me-2 me-sm-5 basket border border-black  p-2 border-2" id="basket-icon">
+            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0">0</div>
             <img class="basket-icon" src="./img/icons/noun-basket-6865168.svg" alt="">
         </div>
 
-        <div id="nav-icon3">
+        <div id="nav-icon3" class="me-2 me-sm-5">
             <span></span>
             <span></span>
             <span></span>
@@ -119,6 +120,7 @@
     {{-- \ CART / --}}
 
     {{ $javaScript }}
+    <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
