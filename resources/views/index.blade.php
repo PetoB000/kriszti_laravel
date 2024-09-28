@@ -47,7 +47,7 @@
                         <div class="category_text w-100 position-absolute">{{ $sortedCategories[$i]['name'] }}</div>
                     </div>
                     @if (isset($sortedCategories[$i + 1]))
-                        <div class="position-relative col h-100 w-100 category" onclick="relocateTo('/Kategória/{{ $sortedCategories[$i]['name'] }}')">
+                        <div class="position-relative col h-100 w-100 category" onclick="relocateTo('/Kategória-{{ $sortedCategories[$i + 1]['name'] }}')">
                             <img class="w-100 object-fit-cover my-1 rounded category_img" src="{{ asset($sortedCategories[$i + 1]['cover_image']) }}" alt="{{ $sortedCategories[$i + 1]['name'] }}">
                             <div class="category_text w-100 position-absolute">{{ $sortedCategories[$i + 1]['name'] }}</div>
                         </div>
@@ -57,7 +57,7 @@
             @if (!empty($remainings))
                 @foreach ($remainings as $remaining)
                     <div class="d-flex category_container col mb-1 p-1 position-relative">
-                        <div class="position-relative h-100 w-100 category" onclick="relocateTo('/Kategória/{{ $remaining['cover_image'] }}')">
+                        <div class="position-relative h-100 w-100 category" onclick="relocateTo('/Kategória-{{ $remaining['name'] }}')">
                             <img class="w-100 object-fit-cover my-1 rounded category_img" src="{{ asset($remaining['cover_image']) }}" alt="{{ $remaining['name'] }}">
                             <div class="position-absolute w-100 category_text">{{ $remaining['name'] }}</div>
                         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller {
@@ -14,7 +15,7 @@ class RouteController extends Controller {
 
     public function __construct() {
         $this->categories = Category::all()->toArray();
-        
+
         view()->share('categories', $this->categories);
     }
 
@@ -39,15 +40,9 @@ class RouteController extends Controller {
 
     public function category(Category $category)
     {
-        // Using the existing $category instance to get related products
-        $products = $category->products; // Alternatively, you can use $category->products()->get()
-    
-        // For debugging purposes, you can use:
-        /* dd($products);  */
-    
+        $category->load('products');
         return view('category', [
-            'category' => $category, 
-            'products' => $products,
+            'category' => $category
         ]);
     }
 
@@ -62,7 +57,11 @@ class RouteController extends Controller {
     }
 
     
-    public function product() {
-        return view('product');
+    public function product(Product $product) {
+        $product->load('thumbnails');
+        
+        return view('product', [
+            'product' => $product
+        ]);
     }
 }

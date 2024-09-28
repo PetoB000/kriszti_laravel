@@ -38,7 +38,7 @@
 
             @foreach ($categories as $category)
                 <li class="dropdown-item mb-1 d-flex bg-custom justify-content-center fs-6 bg-custom border border-black rounded-4  ">
-                    <a href="" class="text-black">{{ $category['name'] }}</a></li>
+                    <a href="/Kategória-{{ $category['name'] }}" class="text-black">{{ $category['name'] }}</a></li>
             @endforeach
         </ul>
 
