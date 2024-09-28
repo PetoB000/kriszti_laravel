@@ -22,6 +22,11 @@
 .category:hover .category_text {
     top: 45%;
     opacity: 1;
+
+}
+
+.category {
+    cursor: pointer;
 }
 
 .category:hover img {

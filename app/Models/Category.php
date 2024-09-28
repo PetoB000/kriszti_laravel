@@ -10,7 +10,13 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function products() {
+    public function products()
+    {
         return $this->hasMany(Product::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name'; 
     }
 }

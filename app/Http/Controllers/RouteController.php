@@ -37,8 +37,18 @@ class RouteController extends Controller {
     }
 
 
-    public function category() {
-        return view('category');
+    public function category(Category $category)
+    {
+        // Using the existing $category instance to get related products
+        $products = $category->products; // Alternatively, you can use $category->products()->get()
+    
+        // For debugging purposes, you can use:
+        /* dd($products);  */
+    
+        return view('category', [
+            'category' => $category, 
+            'products' => $products,
+        ]);
     }
 
 

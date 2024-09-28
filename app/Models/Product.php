@@ -19,4 +19,8 @@ class Product extends Model
     public function  thumbnails() {
         return $this->hasMany(Thumbnail::class);
     }
+
+    public function getRouteKeyName() {
+        return 'name'; 
+    }
 }

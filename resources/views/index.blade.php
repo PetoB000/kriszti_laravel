@@ -42,12 +42,12 @@
         <div class="row px-lg-5 d-flex row-cols-2 row-cols-sm-3 row-cols-lg-5 justify-content-center">
             @for ($i = 0; $i < count($sortedCategories); $i += 2)
                 <div class="d-flex col mb-1 p-1 category_container position-relative">
-                    <div class="position-relative h-100 w-100 category">
+                    <div class="position-relative h-100 w-100 category" onclick="relocateTo('/Kategória-{{ $sortedCategories[$i]['name'] }}')">
                         <img class="w-100 object-fit-cover my-1 rounded category_img" src="{{ asset($sortedCategories[$i]['cover_image']) }}" alt="{{ $sortedCategories[$i]['name'] }}">
                         <div class="category_text w-100 position-absolute">{{ $sortedCategories[$i]['name'] }}</div>
                     </div>
                     @if (isset($sortedCategories[$i + 1]))
-                        <div class="position-relative col h-100 w-100 category">
+                        <div class="position-relative col h-100 w-100 category" onclick="relocateTo('/Kategória/{{ $sortedCategories[$i]['name'] }}')">
                             <img class="w-100 object-fit-cover my-1 rounded category_img" src="{{ asset($sortedCategories[$i + 1]['cover_image']) }}" alt="{{ $sortedCategories[$i + 1]['name'] }}">
                             <div class="category_text w-100 position-absolute">{{ $sortedCategories[$i + 1]['name'] }}</div>
                         </div>
@@ -57,7 +57,7 @@
             @if (!empty($remainings))
                 @foreach ($remainings as $remaining)
                     <div class="d-flex category_container col mb-1 p-1 position-relative">
-                        <div class="position-relative h-100 w-100 category">
+                        <div class="position-relative h-100 w-100 category" onclick="relocateTo('/Kategória/{{ $remaining['cover_image'] }}')">
                             <img class="w-100 object-fit-cover my-1 rounded category_img" src="{{ asset($remaining['cover_image']) }}" alt="{{ $remaining['name'] }}">
                             <div class="position-absolute w-100 category_text">{{ $remaining['name'] }}</div>
                         </div>

@@ -1,0 +1,9 @@
+.product_img {
+    height: 320px;
+    object-fit: cover;
+}
+
+
+.product_container {
+    width: 350px;
+}
