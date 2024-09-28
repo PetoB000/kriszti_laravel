@@ -6,9 +6,9 @@
         
         <div class="container  my-5">
             <div class="row "><h1 class="d-flex justify-content-center">{{ $category->name }}</h1></div>
-            <div class="row   my-4 row-cols-2">
+            <div class="row d-flex  my-4 row-cols-2 row-cols-lg-3">
                 @foreach ($products as $product)
-                <div class="col d-flex justify-content-center mb-2 product_container">
+                <div class="col  d-flex mx-auto justify-content-center mb-2 product_container">
                     <div class="card p-0 " style="width: 18rem; background-color: lightgray;">
                         <img  src="{{ $product->shownImg }}" class="card-img-top rounded product_img" alt="{{ $product->name }}">
                         <div class="card-body">

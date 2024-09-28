@@ -4,6 +4,15 @@
 }
 
 
-.product_container {
-    width: 350px;
+
+@media (max-width: 770px) {
+    .product_img {
+        height: 270px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product_container {
+        width: 100%;
+    }
 }
