@@ -4,7 +4,7 @@
     </x-slot:css>
     <x-slot:main>
         <div class="container-fluid px-3 my-5" id="container-fluid">
-            <div class="row h2 d-flex mx-auto justify-content-center mb-4">{{ $product->name }}</div>
+            <div class="row h2 d-flex mx-auto justify-content-center mb-4" id="name">{{ $product->name }}</div>
             <div class="row d-flex flex-column flex-lg-row">
                 <div class="col-12 col-sm-8 col-lg-5 mb-5 mb-lg-0 d-flex  mx-auto">
                     <div id="carouselExampleIndicators" class="carousel slide" >
@@ -56,7 +56,7 @@
                     <div class="row px-3 px-lg-0 " ><span class="p-0 fs-4 fw-semibold">Fontos!</span>Az epoxy terméket ne tedd ki közvetlen forróságnak, napsütésnek és extrém hidegnek sem, mert ezek mind minőségromláshoz vezethetnek. <br>
                         Tisztítás: nedves, mosószeres ruhával</div>
                     <div class="row  px-3 px-lg-0  d-flex price-div" >
-                        <div class="col d-flex justify-content-end">Ára: {{ $product->price }}Ft</div>
+                        <div class="col d-flex justify-content-end">Ára:  <span class="ms-1" id="price_span"> {{ $product->price }}</span>Ft</div>
                         <div class="col"><span id="to_basket" class="">Kosárba</span></div> 
                     </div>
             
@@ -64,8 +64,6 @@
             </div>
         </div>
         <div class="d-none" id="shownImg">{{ $product->shownImg }}</div>
-        <div class="d-none" id="price">{{ $product->price }}</div>
-        <div class="d-none" id="name">{{ $product->name }}</div>
         <div class="d-none" id="buyingImg">{{ $product->buying_img }}</div>
     </x-slot:main>
     <x-slot:javaScript>

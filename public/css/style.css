@@ -120,7 +120,7 @@ li {
     width: 500px;
     height: 100vh;
     background-color: #353432;
-    transform: translateX(500px);
+/*     transform: translateX(500px); */
     transition: 0.8s;
 }
 

@@ -3,23 +3,47 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const basketObj = {};
+    let basketProducts =  JSON.parse(localStorage.getItem('basketProducts')) || [];
     const basketBtn = document.querySelector('#to_basket');
-    const basketCount = document.querySelector('#basket_counter');
+    const basketCounter = document.querySelector('#basket_counter');
+    let basketCount = basketCounter.innerText;
     const prodName = document.querySelector('#name'); 
     const shownImg = document.querySelector('#shownImg');
     const buyingImg = document.querySelector('#buyingImg');
     const price = document.querySelector('#price');
+    const priceSpan = document.querySelector('#price_span');
+    
+    priceSpan.innerText = formatCurrency(priceSpan.innerText);
 
     basketBtn.addEventListener('click', function() {
-        console.log(prodName.innerText);
-        console.log(shownImg.innerText);
-        console.log(buyingImg.innerText);
-        console.log(price.innerText);
+        let productExists = false;
+
+        for (i = 0;  i < basketProducts.length; i++) {
+            if (basketProducts[i].name === prodName.innerText) {
+                basketProducts[i].quantity++;
+                productExists = true;
+            }
+        }
+
+        if (!productExists) {
+            const product = {
+                name: prodName.innerText,
+                shownImg: shownImg.innerText,
+                buyingImg: buyingImg.innerText,
+                price: priceSpan.innerText,
+                quantity: 1
+            };
+            basketProducts.push(product);
+
+        }
+
+        basketCount++;
+        basketCounter.innerText = basketCount;
+        localStorage.setItem('basketProducts', JSON.stringify(basketProducts));
+        console.log(localStorage.getItem('basketProducts'))
     });
-
-
 });
+
 
 /* \ handling product addition to basket / */
 
@@ -74,3 +98,9 @@ window.addEventListener('load', updateCarousel);
 
 
 /* / get Highest imagest clientHeight and set margin for shorter images \ */
+
+
+function formatCurrency(number) {
+    const formatted = new Intl.NumberFormat('hu-HU').format(number);
+    return formatted.replace(/\s/g, ',');
+}

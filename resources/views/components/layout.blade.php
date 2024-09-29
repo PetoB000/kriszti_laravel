@@ -43,7 +43,7 @@
         </ul>
 
         <div class="ms-3 me-2 me-sm-5 basket border border-black  p-2 border-2" id="basket-icon">
-            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter">0</div>
+            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter"></div>
             <img class="basket-icon" src="./img/icons/noun-basket-6865168.svg" alt="">
         </div>
 
@@ -107,12 +107,25 @@
         </div>
         <div class="row">
             <div class="col-12 d-flex flex-column text-center align-items-center">
-
+                <div class="row">
+                    <div class="col" id="img-name">
+                        <div class="col" id="pImg"></div>
+                        <div class="col" id="pName"></div>
+                    </div>
+                    <div class="col" id="quantity-indicators">
+                        <div class="col" id="quantity"></div>
+                        <div class="col" id="indicators"></div>
+                    </div>
+                    <div class="col" id="price-delete">
+                        <div class="col" id="price"></div>
+                        <div class="col" id="delete"></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 d-flex flex-column text-center align-items-center">
-
+        <div class="row d-flex  ">
+            <div class="col-12 d-flex flex-column align-items-center ">
+saaajt
             </div>
         </div>
     </div>
@@ -120,6 +133,7 @@
     {{-- \ CART / --}}
 
     {{ $javaScript }}
+    <script src="js/basket.js"></script>
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
