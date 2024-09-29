@@ -23,7 +23,7 @@
                         </div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{ $product->shownImg }}" class="d-block w-100 carousel_image" alt="{{ $product->name }}">
+                            <img src="{{ $product->shownImg }}"  class="d-block w-100 carousel_image" alt="{{ $product->name }}">
                           </div>
 
                           @if (!empty($product->thumbnails))
