@@ -43,7 +43,7 @@
         </ul>
 
         <div class="ms-3 me-2 me-sm-5 basket border border-black  p-2 border-2" id="basket-icon">
-            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0">0</div>
+            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter">0</div>
             <img class="basket-icon" src="./img/icons/noun-basket-6865168.svg" alt="">
         </div>
 

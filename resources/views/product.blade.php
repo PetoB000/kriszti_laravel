@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="css/products.css">
     </x-slot:css>
     <x-slot:main>
-        <div class="container-fluid px-3 my-5">
+        <div class="container-fluid px-3 my-5" id="container-fluid">
             <div class="row h2 d-flex mx-auto justify-content-center mb-4">{{ $product->name }}</div>
             <div class="row d-flex flex-column flex-lg-row">
                 <div class="col-12 col-sm-8 col-lg-5 mb-5 mb-lg-0 d-flex  mx-auto">
@@ -63,6 +63,10 @@
                 </div>
             </div>
         </div>
+        <div class="d-none" id="shownImg">{{ $product->shownImg }}</div>
+        <div class="d-none" id="price">{{ $product->price }}</div>
+        <div class="d-none" id="name">{{ $product->name }}</div>
+        <div class="d-none" id="buyingImg">{{ $product->buying_img }}</div>
     </x-slot:main>
     <x-slot:javaScript>
         <script src="js/products.js"></script>
