@@ -9,6 +9,7 @@
 #quantity {
   background-color: white;
   color: black;
+  padding: 6px;
   width: 30px;
 }
 
@@ -19,9 +20,6 @@
 }
 
 
-.productDiv:last-child {
-  padding-bottom: 180px;
-}
 
 
 

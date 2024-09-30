@@ -65,6 +65,8 @@
         </div>
         <div class="d-none" id="shownImg">{{ $product->shownImg }}</div>
         <div class="d-none" id="buyingImg">{{ $product->buying_img }}</div>
+        <div class="d-none" id="pId">{{ $product->id }}</div>
+        <div class="d-none" id="pPrice">{{ $product->price }}</div>
     </x-slot:main>
     <x-slot:javaScript>
         <script src="js/products.js"></script>

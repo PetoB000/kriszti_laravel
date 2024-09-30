@@ -94,8 +94,6 @@
 
     {{-- CART --}}
 
-
-
     <div class="container m-0 p-0 top-0 end-0 position-fixed" id="basket" style="max-width: 500px; height: 100vh; background-color: #333;">
 
         <div class="col p-0 d-flex justify-content-between text-center align-items-center">
@@ -106,55 +104,23 @@
         </div>
 
         <div class="container-fluid p-0" id="basketProdContainer">
-            <div class="row mx-0 productDiv">
 
-                <div class="cart-item d-flex justify-content-between align-items-center bg-dark text-light p-2 pe-0 w-100">
-                  <div class="d-flex align-items-center">
-                    <img id="pImg" src="../img/no-bg/poharalatet.png" alt="Product Image" class="img-fluid" style="max-width: 80px;">
-                    <div class="ms-3">
-                      <h6 class="mb-0" id="pName">Hajlított kicsi tál</h6>
-                    </div>
-                  </div>
-            
-                  <div class="d-flex align-items-center">
-                    <span class="me-2">Mennyiség:</span>
-                    <div class="input-group d-flex flex-column">
-                      <button class="btn btn-outline-light p-1" id="incrementBtn">+</button>
-                      <p class="p-1 m-0 text-center" id="quantity">1</p>
-                      <button class="btn btn-outline-light p-1" id="decrementBtn">-</button>
-                    </div>
-                  </div>
-            
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <strong>Ára: <br> <span id="price">2.500 Ft</span></strong>
-                    </div>
-                    <button class="btn p-1" id="removeBtn">
-                      <img  src="../img/icons/trashcan.svg" style="width: 25px;">
-                    </button>
-                  </div>
-                </div>
-            </div>
         </div>
 
         <div class="row d-flex justify-content-end mx-0 position-absolute w-100 bottom-0 mt-0" >
-          <div class="col-12 p-3 bg-light text-center">
-            <p>Összesen: 2.500 Ft + Szállítás</p>
+          <div class="col-12 p-3 bg-custom text-center">
+            <p>Összesen: <span id="total"></span> Ft + Szállítás</p>
             <button class="btn btn-warning btn-lg rounded rounded-3 w-100">Rendelés leadása</button>
           </div>
         </div>
-      </div>
+    </div>
       
-      
-
     {{-- \ CART / --}}
 
     {{ $javaScript }}
     <script src="js/basket.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
