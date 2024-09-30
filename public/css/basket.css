@@ -1,0 +1,30 @@
+#incrementBtn {
+  transform: rotate(90deg)
+}
+
+#decrementBtn {
+  transform: rotate(90deg)
+}
+
+#quantity {
+  background-color: white;
+  color: black;
+  width: 30px;
+}
+
+
+#basketProdContainer {
+  height: 100%;
+  overflow-y: auto;
+}
+
+
+.productDiv:last-child {
+  padding-bottom: 180px;
+}
+
+
+
+
+
+

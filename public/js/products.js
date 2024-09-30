@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!productExists) {
             const product = {
                 name: prodName.innerText,
-                shownImg: shownImg.innerText,
                 buyingImg: buyingImg.innerText,
                 price: priceSpan.innerText,
                 quantity: 1

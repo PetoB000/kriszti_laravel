@@ -13,6 +13,7 @@
     <link rel="website icon" type="png"
         href="./img/purple-epoxy-resin-icon-cartoon-circle-vector-45522988-removebg.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/basket.css">
     {{ $css }}
 </head>
 
@@ -93,42 +94,58 @@
 
     {{-- CART --}}
 
-    <div class="container p-0 top-0 end-0 position-fixed" id="basket">
-        <div class="row">
-            <div class="col p-0 d-flex justify-content-between  text-center align-items-center">
-                <h1 class="mx-auto text-white" id="basket_text">Kosarad</h1>
-                <svg class="me-4" id="basket-close-button" width="24" height="24"
-                    xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="red" clip-rule="evenodd">
-                    <path
-                        d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 10.293l5.293-5.293.707.707-5.293 5.293 5.293 5.293-.707.707-5.293-5.293-5.293 5.293-.707-.707 5.293-5.293-5.293-5.293.707-.707 5.293 5.293z" />
-                </svg>
 
-            </div>
+
+    <div class="container m-0 p-0 top-0 end-0 position-fixed" id="basket" style="max-width: 500px; height: 100vh; background-color: #333;">
+
+        <div class="col p-0 d-flex justify-content-between text-center align-items-center">
+            <h1 class="mx-auto text-white" id="basket_text">Kosarad</h1>
+            <svg class="me-4" id="basket-close-button" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="red" clip-rule="evenodd">
+              <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 10.293l5.293-5.293.707.707-5.293 5.293 5.293 5.293-.707.707-5.293-5.293-5.293 5.293-.707-.707 5.293-5.293-5.293-5.293.707-.707 5.293 5.293z"/>
+            </svg>
         </div>
-        <div class="row">
-            <div class="col-12 d-flex flex-column text-center align-items-center">
-                <div class="row">
-                    <div class="col" id="img-name">
-                        <div class="col" id="pImg"></div>
-                        <div class="col" id="pName"></div>
+
+        <div class="container-fluid p-0" id="basketProdContainer">
+            <div class="row mx-0 productDiv">
+
+                <div class="cart-item d-flex justify-content-between align-items-center bg-dark text-light p-2 pe-0 w-100">
+                  <div class="d-flex align-items-center">
+                    <img id="pImg" src="../img/no-bg/poharalatet.png" alt="Product Image" class="img-fluid" style="max-width: 80px;">
+                    <div class="ms-3">
+                      <h6 class="mb-0" id="pName">Hajlított kicsi tál</h6>
                     </div>
-                    <div class="col" id="quantity-indicators">
-                        <div class="col" id="quantity"></div>
-                        <div class="col" id="indicators"></div>
+                  </div>
+            
+                  <div class="d-flex align-items-center">
+                    <span class="me-2">Mennyiség:</span>
+                    <div class="input-group d-flex flex-column">
+                      <button class="btn btn-outline-light p-1" id="incrementBtn">+</button>
+                      <p class="p-1 m-0 text-center" id="quantity">1</p>
+                      <button class="btn btn-outline-light p-1" id="decrementBtn">-</button>
                     </div>
-                    <div class="col" id="price-delete">
-                        <div class="col" id="price"></div>
-                        <div class="col" id="delete"></div>
+                  </div>
+            
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <strong>Ára: <br> <span id="price">2.500 Ft</span></strong>
                     </div>
+                    <button class="btn p-1" id="removeBtn">
+                      <img  src="../img/icons/trashcan.svg" style="width: 25px;">
+                    </button>
+                  </div>
                 </div>
             </div>
         </div>
-        <div class="row d-flex  ">
-            <div class="col-12 d-flex flex-column align-items-center ">
-saaajt
-            </div>
+
+        <div class="row d-flex justify-content-end mx-0 position-absolute w-100 bottom-0 mt-0" >
+          <div class="col-12 p-3 bg-light text-center">
+            <p>Összesen: 2.500 Ft + Szállítás</p>
+            <button class="btn btn-warning btn-lg rounded rounded-3 w-100">Rendelés leadása</button>
+          </div>
         </div>
-    </div>
+      </div>
+      
+      
 
     {{-- \ CART / --}}
 

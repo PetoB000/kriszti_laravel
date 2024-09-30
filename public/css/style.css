@@ -115,11 +115,14 @@ li {
     font-family: New Century Schoolbook, TeX Gyre Schola, serif;
 }
 
+.basketProdDiv {
+    z-index: 100;
+}
+
+
+
 #basket {
     z-index: 5;
-    width: 500px;
-    height: 100vh;
-    background-color: #353432;
 /*     transform: translateX(500px); */
     transition: 0.8s;
 }
