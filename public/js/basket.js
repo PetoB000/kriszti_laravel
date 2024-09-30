@@ -111,17 +111,35 @@ document.addEventListener('DOMContentLoaded', function () {
         return new Intl.NumberFormat('hu-HU').format(number).replace(/\s/g, ',') + ' Ft';
     }
 
-    function generateProductHTML(id, product) {
-        const productHTML = document.createElement('div');
-        productHTML.classList.add('row', 'mx-0', 'productDiv');
-        productHTML.dataset.id = id;
-        productHTML.innerHTML = `
-            <div class="cart-item d-flex justify-content-between align-items-center text-light p-2 pe-0 w-100">
-                <div class="d-flex align-items-center" style="width: 160px">
-                    <img src=".${product.imgSrc}" alt="Product Image" class="img-fluid product_img">
-                    <div class="ms-3">
-                        <h6 class="mb-0 product_name">${product.name}</h6>
-                    </div>
+
+
+function changeQuantity(operation, id) {
+    const quantityDiv = document.querySelector(`#quantity-${id}`);
+    let quantity = parseInt(quantityDiv.innerText);
+    quantity = (operation === 'add') ? quantity + 1 : (quantity > 1 ? quantity - 1 : quantity);
+    quantityDiv.innerText = quantity;
+}
+
+function removeProduct(id) {
+    const productDiv = document.querySelector(`[data-id="${id}"]`);
+    productDiv.remove(); 
+    delete basketItems[id]
+    localStorage.setItem('basketProducts', JSON.stringify(basketItems));
+}
+
+
+
+
+
+function generateProductHTML(id, product) {
+    const productHTML = document.createElement('div');
+    productHTML.innerHTML =  `
+    <div class="row mx-0 productDiv" data-id="${id}">
+        <div class="cart-item d-flex justify-content-between align-items-center text-light p-2 pe-0 w-100">
+            <div class="d-flex align-items-center">
+                <img id="pImg-${id}" src=".${product.buyingImg}" alt="Product Image" class="img-fluid" style="max-width: 80px;">
+                <div class="ms-3">
+                    <h6 class="mb-0" id="pName-${id}" style="width: 130px">${product.name}</h6>
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="me-2">Mennyiség:</span>
