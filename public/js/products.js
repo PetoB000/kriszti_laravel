@@ -1,34 +1,7 @@
-
 /* handling product addition to basket */
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    let basketProducts =  JSON.parse(localStorage.getItem('basketProducts')) || {};
-    const basketBtn = document.querySelector('#to_basket');
-    const prodName = document.querySelector('#name'); 
-    const buyingImg = document.querySelector('#buyingImg');
-    const basePrice = document.querySelector('#pPrice').innerText;
-    const priceSpan = document.querySelector('#price_span');
-    const id = document.querySelector('#pId').innerText
-    
-    priceSpan.innerText = formatCurrency(priceSpan.innerText);
 
-    basketBtn.addEventListener('click', function() {
-        if (basketProducts[id]) {
-            basketProducts[id].quantity += 1;
-            basketProducts[id].price = basePrice * basketProducts[id].quantity;
-        } else {
-            basketProducts[id] = {
-                name: prodName.innerText,
-                buyingImg: buyingImg.innerText,
-                price: basePrice,
-                quantity: 1
-            }
-        }
-        localStorage.setItem('basketProducts', JSON.stringify(basketProducts));
-        console.log(JSON.parse(localStorage.getItem('basketProducts')))
-    });
-});
 
 
 /* \ handling product addition to basket / */
