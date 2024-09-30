@@ -56,7 +56,7 @@
                     <div class="row px-3 px-lg-0 " ><span class="p-0 fs-4 fw-semibold">Fontos!</span>Az epoxy terméket ne tedd ki közvetlen forróságnak, napsütésnek és extrém hidegnek sem, mert ezek mind minőségromláshoz vezethetnek. <br>
                         Tisztítás: nedves, mosószeres ruhával</div>
                     <div class="row  px-3 px-lg-0  d-flex price-div" >
-                        <div class="col d-flex justify-content-end">Ára:  <span class="ms-1" id="price_span"> {{ $product->price }}</span>Ft</div>
+                        <div class="col d-flex justify-content-end">Ára:  <span class="ms-1" id="price_span"> {{ $product->price }}</span></div>
                         <div class="col"><span id="to_basket" class="">Kosárba</span></div> 
                     </div>
             

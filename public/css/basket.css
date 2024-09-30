@@ -1,8 +1,7 @@
-#incrementBtn {
-  transform: rotate(90deg)
-}
 
-#decrementBtn {
+
+.decrementBtn,
+.incrementBtn {
   transform: rotate(90deg)
 }
 
@@ -13,15 +12,68 @@
   width: 30px;
 }
 
+.product_img {
+  width: 80px;
+}
+
+.price-trashcan {
+  width: 75px;
+}
 
 #basketProdContainer {
   height: 100%;
   overflow-y: auto;
 }
 
+.productDiv:nth-child(odd) {
+  background-color: rgba(26, 25, 25, 0.274);
+}
 
 
+@media (max-width: 480px) {
+  .productDiv {
+    font-size: 13px;
+  }
 
+  .input-group {
+    scale: 0.8;
+  }
+
+  .product_name {
+    font-size: 14px;
+  }
+
+  .product_img {
+    width: 60px;
+  }
+
+  .price-trashcan {
+    width: 62px;
+  }
+
+/*   .remove-btn {
+    width: 17px;
+  } */
+}
+
+@media (max-width: 400px) {
+  .product_name {
+    font-size: 12px;
+  }
+
+  .productDiv {
+    font-size: 11px;
+  }
+
+  .product_img {
+    width: 50px;
+  }
+
+  .input-group {
+    scale: 0.7;
+    margin-right: 5px;
+  }
+}
 
 
 
