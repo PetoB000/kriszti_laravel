@@ -41,7 +41,7 @@ function removeProduct(id) {
     const productDiv = document.querySelector(`[data-id="${id}"]`);
     productDiv.remove(); 
     delete basketItems[id]
-/*     localStorage.setItem('basketProducts', JSON.stringify(basketItems)); */
+    localStorage.setItem('basketProducts', JSON.stringify(basketItems));
 }
 
 
