@@ -1,7 +1,8 @@
 <x-layout>
     <x-slot:css></x-slot:css>
     <x-slot:main>
-        <div class="container py-5">
+        <div class="container py-5"  style="min-height: 70vh;">
+
             <div class="row py-5">
                 <div class="h2">Vásárlás menete</div>
                 <p>A feltöltött termékek inspirációnak szolgálnak, egyik sincs készleten. Bármelyiket el tudom készíteni az általad kért színben, de ugyanolyat nem tudok, még soha nem született két egyforma termék, ezért is olyan csodálatosak, mert mindegyik hordozza magában az egyediség jegyét!</p>

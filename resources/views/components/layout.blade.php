@@ -44,7 +44,7 @@
         </ul>
 
         <div class="ms-3 me-2 me-sm-5 basket border border-black  p-2 border-2" id="basket-icon">
-            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter"></div>
+            <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter">0</div>
             <img class="basket-icon" src="./img/icons/noun-basket-6865168.svg" alt="">
         </div>
 
@@ -108,9 +108,9 @@
         </div>
 
         <div class="row d-flex justify-content-end mx-0 position-absolute w-100 bottom-0 mt-0" >
-          <div class="col-12 p-3 bg-custom text-center">
-            <p id="basketIndicator">Összesen: <span id="total"></span> + Szállítás</p>
-            <button class="btn btn-warning btn-lg rounded rounded-3 w-100">Rendelés leadása</button>
+          <div class="col-12 p-3 bg-custom text-center"  style="cursor: pointer">
+            <p id="basketIndicator" >Összesen: <span id="total"></span> + Szállítás</p>
+            <button class="btn btn-warning btn-lg d-flex mx-auto justify-content-center  rounded rounded-4 w-75" onclick="relocateTo('/Rendelés')" id="order-button">Rendelés leadása</button>
           </div>
         </div>
     </div>

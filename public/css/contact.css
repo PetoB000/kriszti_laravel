@@ -56,9 +56,14 @@ textarea:-webkit-autofill:focus {
     font-size: 15px;
 }
 
-
 .boxx {
-    transform: translateY(-18px);
+  transform: translateY(-18px);
+}
+
+
+.checkbox p {
+    color: white;
+    font-size: 12px;
 }
 
 .form {
@@ -79,6 +84,7 @@ textarea:-webkit-autofill:focus {
     position: relative;
     
 }
+
 
 #container_ {
     min-height: 110vh;
@@ -181,7 +187,7 @@ textarea.input {
   transform: translateY(0);
 }
 
-.btn {
+.btnn {
   padding: 0.6rem 1.3rem;
   background-color: #fff;
   border: 2px solid #fafafa;
@@ -196,7 +202,7 @@ textarea.input {
   width: 100%;
 }
 
-.btn:hover {
+.btnn:hover {
   background-color: transparent;
   color: #fff;
 }
@@ -407,7 +413,7 @@ textarea.input {
     padding: 0.45rem 1.2rem;
   }
 
-  .btn {
+  .btnn {
     padding: 0.45rem 1.2rem;
   }
 }

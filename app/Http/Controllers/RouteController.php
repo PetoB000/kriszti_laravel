@@ -64,4 +64,9 @@ class RouteController extends Controller {
             'product' => $product
         ]);
     }
+
+
+    public function order() {
+        return view('order');
+    }
 }

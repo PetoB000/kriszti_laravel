@@ -2,13 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const basketBtn = document.querySelector('#to_basket');
     const basketCounter = document.querySelector('#basket_counter');
     const productsContainer = document.querySelector('#basketProdContainer');
-    const orderButton = document.querySelector('.btn-warning');
+    const orderButton = document.querySelector('#order-button');
     const totalContainer = document.querySelector('.bg-custom');
-    const emptyMessage = document.createElement('p');
-    emptyMessage.classList.add('text-center', 'w-100', 'mt-3');
-    emptyMessage.textContent = 'Üres a kosarad';
-    emptyMessage.style.display = 'none'; 
-    totalContainer.parentElement.appendChild(emptyMessage);
+
     let basketProducts = JSON.parse(localStorage.getItem('basketProducts')) || {};
 
     const productDetails = {
@@ -40,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         }
         localStorage.setItem('basketProducts', JSON.stringify(basketProducts));
+
     }
 
     function updateBasketDisplay() {
@@ -61,34 +58,36 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTotalPrice();
         attachEventListeners();
     }
-
     function updateTotalPrice() {
         const totalSpan = document.querySelector('#total');
-        let totalPrice = 0;
-        for (const product of Object.values(basketProducts)) {
-            totalPrice += product.price;
+        if(totalSpan) {
+            let totalPrice = 0;
+            for (const product of Object.values(basketProducts)) {
+                totalPrice += product.price;
+            }
+            totalSpan.textContent = formatCurrency(totalPrice);
         }
-        totalSpan.textContent = formatCurrency(totalPrice);
     }
+
+    
+    
 
     function toggleEmptyBasketMessage() {
         const isBasketEmpty = Object.keys(basketProducts).length === 0;
-        const basketIndicator =  document.querySelector('#basketIndicator');
-
+        const basketIndicator = document.querySelector('#basketIndicator');
         if (isBasketEmpty) {
-            totalContainer.style.display = 'none'; 
-            orderButton.style.display = 'none'; 
-            emptyMessage.style.display = 'block'; 
-            basketIndicator.innerHTML = " Üres a kosarad"
+            orderButton.style.display = "none";
+            orderButton.classList.remove('d-flex')
+            basketIndicator.classList.add('fs-3')
+            basketIndicator.innerHTML = " Üres a kosarad";
         } else {
+            orderButton.classList.add('d-flex')
+            basketIndicator.classList.remove('fs-3')
             totalContainer.style.display = 'block'; 
-            orderButton.style.display = 'block'; 
-            emptyMessage.style.display = 'none'; 
-            basketIndicator.innerHTML = "Összesen: <span id='total'></span> + Szállítás"
-            updateTotalPrice()
+            basketIndicator.innerHTML = "Összesen: <span id='total'></span> + Szállítás";
+            updateTotalPrice();
         }
     }
-
 
     window.changeQuantity = function changeQuantity(operation, id) {
         if (!basketProducts[id]) return;
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
-                    <div class="me-2 price-trashcan" >
+                    <div class="me-2 price-trashcan">
                         <strong>Ára: <br> <span>${formatCurrency(product.price)}</span></strong>
                     </div>
                     <button class="btn p-0 remove-btn" data-id="${id}">
@@ -142,6 +141,14 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>`;
         return productHTML;
     }
+
+
+
+
+
+
+
+
 
     function attachEventListeners() {
         const incrementBtns = document.querySelectorAll('.incrementBtn');
@@ -170,4 +177,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     updateBasketDisplay();
+
+    const categoryPrices = document.querySelectorAll('.category_price');
+    if (categoryPrices) {
+        categoryPrices.forEach(categoryPrice => {
+            categoryPrice.innerText = formatCurrency(categoryPrice.innerText);    
+        });
+    }
 });
+
+

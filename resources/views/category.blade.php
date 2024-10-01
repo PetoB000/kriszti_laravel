@@ -16,7 +16,7 @@
                         <img  src="{{ $product->shownImg }}" class="card-img-top rounded product_img" alt="{{ $product->name }}">
                         <div class="card-body">
                           <h5 class="card-title">{{ $product->name }}</h5>
-                          <p class="card-text">Ára:  {{ $product->price }} Ft</p>
+                          <p class="card-text">Ára: <span class="category_price">{{ $product->price }}</span></p>
             
                           <a href="/Termék-{{ $product->id }}" class="btn btn-outline-secondary w-50 mx-auto d-flex  justify-content-center">Megnézem</a>
                         </div>

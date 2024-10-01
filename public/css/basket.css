@@ -16,8 +16,13 @@
   width: 80px;
 }
 
+
+#basket {
+  z-index: 1100;
+}
+
 .price-trashcan {
-  width: 75px;
+  width: 77px;
 }
 
 #basketProdContainer {

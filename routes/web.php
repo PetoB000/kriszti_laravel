@@ -14,3 +14,5 @@ Route::get('/Kapcsolat', [RouteController::class, 'contact']);
 Route::get('/Kategória-{category}', [RouteController::class, 'category']);
 
 Route::get('/Termék-{product}', [RouteController::class, 'product']);
+
+Route::get('/Rendelés', [RouteController::class, 'order']);
