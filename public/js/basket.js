@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
         productHTML.innerHTML = `
             <div class="cart-item d-flex justify-content-between align-items-center text-light p-2 pe-0 w-100">
                 <div class="d-flex align-items-center" style="width: 160px">
-                    <img src=".${product.imgSrc}" alt="Product Image" class="img-fluid product_img">
+                    <img src=".${product.imgSrc}" alt="Product Image" class="img-fluid basket_product_img">
                     <div class="ms-3">
                         <h6 class="mb-0 product_name">${product.name}</h6>
                     </div>

@@ -12,7 +12,7 @@
   width: 30px;
 }
 
-.product_img {
+.basket_product_img {
   width: 80px;
 }
 
@@ -43,7 +43,7 @@
     font-size: 14px;
   }
 
-  .product_img {
+  .basket_product_img {
     width: 60px;
   }
 
@@ -65,7 +65,7 @@
     font-size: 11px;
   }
 
-  .product_img {
+  .basket_product_img {
     width: 50px;
   }
 
