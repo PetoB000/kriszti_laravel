@@ -109,7 +109,7 @@
 
         <div class="row d-flex justify-content-end mx-0 position-absolute w-100 bottom-0 mt-0" >
           <div class="col-12 p-3 bg-custom text-center">
-            <p>Összesen: <span id="total"></span> Ft + Szállítás</p>
+            <p id="basketIndicator">Összesen: <span id="total"></span> + Szállítás</p>
             <button class="btn btn-warning btn-lg rounded rounded-3 w-100">Rendelés leadása</button>
           </div>
         </div>

@@ -42,7 +42,7 @@ textarea:-webkit-autofill:focus {
 }
 
 
-.container {
+#container_ {
     position: relative;
     min-height: 100vh;
     background-color: #fafafa;
@@ -80,7 +80,7 @@ textarea:-webkit-autofill:focus {
     
 }
 
-.container {
+#container_ {
     min-height: 110vh;
     background-color: transparent;
 }
@@ -365,7 +365,7 @@ textarea.input {
 }
 
 @media (max-width: 480px) {
-  .container {
+  #container_ {
     padding: 1.5rem;
   }
 
