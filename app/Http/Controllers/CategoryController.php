@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function sortCategories($categories)
-    {
+    public function sortCategories($categories) {
         $shortCategories = [];
         $longCategories = [];
 
@@ -48,8 +47,7 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         Log::info('Category store method called');
         $request->validate([
             'category-name' => 'required|string|max:255',
@@ -69,4 +67,51 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success', 'Category added successfully!');
     }
+
+
+    public function destroy($id) {
+        $category = Category::findOrFail($id);
+
+        $imagePath = public_path($category->cover_image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        $category->delete();
+
+        return redirect()->back()->with('success', 'Category deleted successfully!');
+    }
+
+
+    public function edit($id) {
+        $category = Category::findOrFail($id);
+        return view('edit', compact('category'));
+    }
+
+    public function update(Request $request, $id) {
+    $category = Category::findOrFail($id);
+    $request->validate([
+        'category-name' => 'required|string|max:255',
+        'category-image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+    ]);
+
+    $category->name = $request->input('category-name');
+
+    if ($request->hasFile('category-image')) {
+        $oldImagePath = public_path($category->cover_image);
+        if (file_exists($oldImagePath)) {
+            unlink($oldImagePath);
+        }
+
+        $image = $request->file('category-image');
+        $uniqueId = uniqid();
+        $imageName = $uniqueId . '-' . $image->getClientOriginalName(); 
+        $image->move(public_path('uploads/categories'), $imageName);
+        $category->cover_image = 'uploads/categories/' . $imageName;
+    }
+    $category->save();
+
+    return redirect()->route('admin.index')->with('success', 'Category updated successfully!');
+}
+
 }

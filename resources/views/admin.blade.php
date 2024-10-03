@@ -50,8 +50,16 @@
                                     <div class="card-body">
                                       <h5 class="card-title">{{ $category->name }}</h5>
                                       <div class="row">
-                                        <div class="col btn btn-primary">Módosítás</div>
-                                        <div class="col btn btn-danger">Törlés</div>
+                                        <div class="col">
+                                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary">Módosítás</a>
+                                        </div>
+                                        <div class="col">
+                                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('A kategóia törlésével kitörlöd a hozzá tartozó termékeket! \n Biztosan törölni szeretnéd?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Törlés</button>
+                                            </form>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>

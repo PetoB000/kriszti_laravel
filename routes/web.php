@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RouteController;
-use App\Http\Controllers\AdminController; // Don't forget to import AdminController if you have it
+use App\Http\Controllers\AdminController;
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +22,11 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Admin routes - protected by middleware
 Route::middleware([CheckAdmin::class, 'auth'])->prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index'); // Admin dashboard
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
-    // Route for category store (move to CategoryController)
     Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
 });
 
