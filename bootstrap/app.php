@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Register middleware to the 'web' group
+        $middleware->group('admin', [
+            \App\Http\Middleware\CheckAdmin::class,
+            // You can add more middleware classes here
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

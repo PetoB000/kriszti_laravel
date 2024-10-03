@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('name');
             $table->string('cover_image');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

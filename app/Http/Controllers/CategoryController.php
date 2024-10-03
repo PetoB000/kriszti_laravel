@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -45,4 +47,26 @@ class CategoryController extends Controller
         return [$sortedCategories, $remaining];
     }
 
+
+    public function store(Request $request)
+    {
+        Log::info('Category store method called');
+        $request->validate([
+            'category-name' => 'required|string|max:255',
+            'category-image' => 'required|image|mimes:jpeg,png,jpg,gif',
+        ]);
+
+        if ($request->hasFile('category-image')) {
+            $image = $request->file('category-image');
+            $uniqueId = uniqid();
+            $imageName = $uniqueId . '-' . $image->getClientOriginalName(); 
+            $image->move(public_path('uploads/categories'), $imageName);
+            Category::create([
+                'name' => $request->input('category-name'),
+                'cover_image' => 'uploads/categories/' . $imageName,
+            ]);
+        };
+
+        return redirect()->back()->with('success', 'Category added successfully!');
+    }
 }

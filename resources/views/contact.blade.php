@@ -98,7 +98,7 @@
                       <p class="fs-custom">Az<a href="Adatkezelesi-tajekoztato.html">Adatkezelési tájékoztatót</a> elolvastam, megértettem és elfogadom.</p>
                     </div>
       
-                    <button type="submit" value="Send" class="btn">Küldés</button>
+                    <button type="submit" value="Send" class="btn btnn">Küldés</button>
                   </form>
                 </div>
               </div>

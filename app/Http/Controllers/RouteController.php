@@ -69,4 +69,10 @@ class RouteController extends Controller {
     public function order() {
         return view('order');
     }
+
+    public function login() {
+        return view('login');
+    }
+
+    
 }
