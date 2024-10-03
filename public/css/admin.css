@@ -2,3 +2,8 @@ body {
     background-image: url(../img/background.png);
     font-family: "Poppins", sans-serif;
 }
+
+.card_img {
+    height: 220px;
+    object-fit: cover;
+}
