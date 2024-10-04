@@ -45,7 +45,7 @@
                         @foreach($product->thumbnails as $thumbnail)
                             <div class="form-check d-flex flex-column">
                                 <img src="{{ asset($thumbnail->path) }}" width="100" alt="{{ $product->name }}">
-                                <input type="checkbox" name="{{ $thumbnail->id }}" id="{{ $thumbnail->id }}" autocomplete="off">
+                                <input type="checkbox" name="{{ $thumbnail->id }}" class="btn-check" id="{{ $thumbnail->id }}" autocomplete="off">
                                 <label class="btn btn-outline-danger" for="{{ $thumbnail->id }}">Törlés</label>
                             </div>
                         @endforeach

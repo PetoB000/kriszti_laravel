@@ -48,7 +48,6 @@ class CategoryController extends Controller
 
 
     public function store(Request $request) {
-        Log::info('Category store method called');
         $request->validate([
             'category-name' => 'required|string|max:255',
             'category-image' => 'required|image|mimes:jpeg,png,jpg,gif',

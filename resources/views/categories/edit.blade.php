@@ -19,7 +19,7 @@
                     <small class="form-text text-muted">Jelenlegi kép: <img src="{{ asset($category->cover_image) }}" width="100" alt="{{ $category->name }}"></small>
                 </div>
         
-                <button type="submit" class="btn btn-primary">Változtatás</button>
+                <button type="submit" class="btn btn-primary mb-5">Változtatás</button>
             </form>
         </div>
     </x-slot:main>

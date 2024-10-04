@@ -10,12 +10,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
     private function replaceLineBreaks($input) {
         $output = preg_replace('/<br\s*\/?>/i', "\n", $input);
         $output = str_replace(["\r\n", "\r", "\n"], "\n", $output);
-
         return $output;
+    }
+
+    public function add($categoryId) {
+        $category  = Category::findOrFail($categoryId);
+        return  view('product.add', compact('category'));
     }
 
     public function edit($id) {
@@ -29,6 +32,63 @@ class ProductController extends Controller
         ]);
     }
 
+    public function store(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'category_id' => 'required|integer|exists:categories,id',
+            'shownImg' => 'nullable|image|mimes:jpeg,png,jpg',
+            'buying_img' => 'nullable|image|mimes:jpeg,png,jpg',
+            'thumbnails.*' => 'nullable|image|mimes:jpeg,png,jpg',
+        ]);
+
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->description = $this->replaceLineBreaks($request->input('description'));
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+
+        // Handle the image uploads
+        $this->handleImageUploads($request, $product);
+
+        // Save the product first
+        $product->save();
+
+        return redirect()->route('admin.index')->with('success', 'Termék sikeresen hozzáadva!');
+    }
+
+    private function handleImageUploads(Request $request, Product $product) {
+        if ($request->hasFile('shownImg')) {
+            $shownImage = $request->file('shownImg');
+            $shownImageName = time() . '-' . $shownImage->getClientOriginalName();
+            $shownImage->move(public_path('uploads/products'), $shownImageName);
+            $product->shownImg = 'uploads/products/' . $shownImageName;
+        }
+    
+        if ($request->hasFile('buying_img')) {
+            $buyingImage = $request->file('buying_img');
+            $buyingImageName = time() . '-' . $buyingImage->getClientOriginalName();
+            $buyingImage->move(public_path('uploads/products'), $buyingImageName);
+            $originalImagePath = public_path('uploads/products/' . $buyingImageName);
+            $processedImagePath = $this->removeBackgroundAndStore($originalImagePath);
+            $product->buying_img = $processedImagePath;
+        }
+    
+        // Save the product to get the product ID
+        $product->save();
+    
+        // Now create the thumbnails
+        if ($request->hasFile('thumbnails')) {
+            foreach ($request->file('thumbnails') as $thumbnail) {
+                $thumbnailName = time() . '-' . $thumbnail->getClientOriginalName();
+                $thumbnail->move(public_path('uploads/products/thumbnails'), $thumbnailName);
+                // Now we can create the thumbnail associated with the product
+                $product->thumbnails()->create(['path' => 'uploads/products/thumbnails/' . $thumbnailName]);
+            }
+        }
+    }
+    
 
     public function update(Request $request, $id) {
         $product = Product::findOrFail($id);
@@ -44,7 +104,7 @@ class ProductController extends Controller
         ]);
 
         $product->name = $request->input('name');
-        $product->description = $request->input('description');
+        $product->description = $this->replaceLineBreaks($request->input('description'));
         $product->price = $request->input('price');
         $product->category_id = $request->input('category');
 
@@ -58,12 +118,9 @@ class ProductController extends Controller
         if ($request->hasFile('buying_img')) {
             $buyingImage = $request->file('buying_img');
             $buyingImageName = time() . '-' . $buyingImage->getClientOriginalName();
-
             $buyingImage->move(public_path('uploads/products'), $buyingImageName);
             $originalImagePath = public_path('uploads/products/' . $buyingImageName);
-
             $processedImagePath = $this->removeBackgroundAndStore($originalImagePath);
-
             $product->buying_img = $processedImagePath;
         }
 
@@ -83,37 +140,54 @@ class ProductController extends Controller
                 $thumbnail->delete();
             }
         }
+
         $product->save();
 
         return redirect()->route('admin.index')->with('success', 'Termék sikeresen módosítva!');
     }
 
-
     public function removeBackgroundAndStore($imagePath) {
-    $client = new Client();
+        $client = new Client();
 
-    $response = $client->post('https://ai-background-remover.p.rapidapi.com/image/matte/v1', [
-        'headers' => [
-            'x-rapidapi-host' => 'ai-background-remover.p.rapidapi.com',
-            'x-rapidapi-key' => '2adcea612dmsh7443ba77bc9faf3p102df4jsn5ce818cb9525',
-        ],
-        'multipart' => [
-            [
-                'name'     => 'image',
-                'contents' => fopen($imagePath, 'r'),
-                'filename' => basename($imagePath),
+        $response = $client->post('https://ai-background-remover.p.rapidapi.com/image/matte/v1', [
+            'headers' => [
+                'x-rapidapi-host' => 'ai-background-remover.p.rapidapi.com',
+                'x-rapidapi-key' => '2adcea612dmsh7443ba77bc9faf3p102df4jsn5ce818cb9525',
             ],
-        ],
-    ]);
-    $processedImage = $response->getBody()->getContents();
+            'multipart' => [
+                [
+                    'name'     => 'image',
+                    'contents' => fopen($imagePath, 'r'),
+                    'filename' => basename($imagePath),
+                ],
+            ],
+        ]);
 
-    $fileName = uniqid() . '-processed.png';
-    $processedImagePath = public_path('uploads/products/processed');
-    file_put_contents($processedImagePath . '/' . $fileName, $processedImage);
+        $processedImage = $response->getBody()->getContents();
+        $fileName = uniqid() . '-processed.png';
+        $processedImagePath = public_path('uploads/products/processed');
+        file_put_contents($processedImagePath . '/' . $fileName, $processedImage);
 
-    return 'uploads/products/processed/' . $fileName;
-}
+        return 'uploads/products/processed/' . $fileName;
+    }
     
+    public function destroy($id) {
+        $product = Product::findOrFail($id);
+        $product->load('thumbnails');
 
+        $imagePath = public_path($product->shownImg);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+        foreach($product->thumbnails as $thumbnail) {
+            $imagePath = public_path($thumbnail->path);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
 
+        $product->delete();
+
+        return redirect()->back()->with('success', 'Category deleted successfully!');
+    }
 }

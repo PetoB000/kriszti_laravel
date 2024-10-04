@@ -3,10 +3,12 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GaleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
+
 
 
 // Public routes
@@ -34,5 +36,13 @@ Route::middleware([CheckAdmin::class, 'auth'])->prefix('admin')->group(function 
 
     // Product routes
     Route::resource('product', ProductController::class)->except(['show']);
+    Route::get('product/add/{category}', [ProductController::class, 'add'])->name('product.add');
+    Route::post('product/store', [ProductController::class, 'store'])->name('product.store');
+
+    // Galery routes
+    Route::post('gallery/store', [GaleryController::class, 'store'])->name('gallery.store');
+    Route::delete('/gallery/{gallery}', [GaleryController::class, 'destroy'])->name('gallery.destroy');
+
+
 });
 

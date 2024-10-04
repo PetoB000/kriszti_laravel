@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function index() {
         $categories  = Category::all();
         $categories->load('products');
-        $galleryImages = Gallery::all()->toArray();
+        $galleryImages = Gallery::all();
 
         return view('admin', [
             'categories' =>  $categories,

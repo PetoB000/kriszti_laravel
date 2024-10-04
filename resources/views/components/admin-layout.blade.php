@@ -10,9 +10,9 @@
     {{ $css }}
 </head>
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid mb-5">
         <div class="row">
-            <div class=""><img class="d-flex  mx-auto" src="{{ asset('img/logo3.png') }}" alt="logo" srcset=""></div>
+            <div class=""><img class="d-flex w-25 mx-auto" src="{{ asset('img/logo3.png') }}" alt="logo" srcset=""></div>
         </div>
     </div>
 

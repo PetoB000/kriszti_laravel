@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
+    protected $fillable = ['path'];
     use HasFactory;
 }
