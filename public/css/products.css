@@ -6,14 +6,7 @@
     background-color: black;
 }
 
-#to_basket {
-    background-image: url("../img/icons/Stacked_blob.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 75px;
-    font-size: 19px;
-    cursor: pointer;
-}
+
 
 .price-div {
     margin-top: 50px;

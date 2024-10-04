@@ -3,7 +3,7 @@
 
 <x-layout>
     <x-slot:css>
-        <link rel="stylesheet" href="css/category.css">
+        <link rel="stylesheet" href="{{ asset('css/category.css') }}">
     </x-slot:css>
     <x-slot:main>
         
@@ -13,12 +13,12 @@
                 @foreach ($category->products as $product)
                 <div class="col  d-flex mx-auto justify-content-center mb-2 product_container">
                     <div class="card p-0 " style="width: 18rem; background-color: lightgray;">
-                        <img  src="{{ $product->shownImg }}" class="card-img-top rounded product_img" alt="{{ $product->name }}">
+                        <img  src="{{ asset($product->shownImg) }}" class="card-img-top rounded product_img" alt="{{ $product->name }}">
                         <div class="card-body">
                           <h5 class="card-title">{{ $product->name }}</h5>
                           <p class="card-text">Ára: <span class="category_price">{{ $product->price }}</span></p>
             
-                          <a href="/Termék-{{ $product->id }}" class="btn btn-outline-secondary w-50 mx-auto d-flex  justify-content-center">Megnézem</a>
+                          <a href="/Termék/{{ $product->id }}" class="btn btn-outline-secondary w-50 mx-auto d-flex  justify-content-center">Megnézem</a>
                         </div>
                       </div>
                 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,12 @@
 <body>
     <div class="container-fluid ">
         <div class="row">
-            <div class=""><img class="d-flex  mx-auto" src="{{ asset('img/logo3.png') }}" alt="" srcset=""></div>
+            <div class=""><img class="d-flex  mx-auto" src="{{ asset('img/logo3.png') }}" alt="logo" srcset=""></div>
         </div>
     </div>
 
     {{ $main }}
+
+    {{ $javaScript }}
 </body>
 </html>

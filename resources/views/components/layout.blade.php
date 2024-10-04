@@ -12,8 +12,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="website icon" type="png"
         href="./img/purple-epoxy-resin-icon-cartoon-circle-vector-45522988-removebg.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/basket.css') }}">
     {{ $css }}
 </head>
 
@@ -21,7 +21,7 @@
     {{-- MENU --}}
 
     <div class="menu">
-        <img src="./img/logo3.png" alt="Kriszti műhelye logo" onclick="relocateTo('/')" class="logo">
+        <img src="{{ asset('./img/logo3.png') }}" alt="Kriszti műhelye logo" onclick="relocateTo('/')" class="logo">
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 " onclick="relocateTo('/')">
             Főoldal</div>
         <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 "
@@ -32,7 +32,7 @@
             onclick="relocateTo('/Kapcsolat')">Kapcsolat</div>
         <div class="dropdown">
             <div class="main_link pulse mx-2 border border-black rounded-4 py-1 px-3 border-2 ">Termékeim <img
-                    src="./img/icons/down-arrow(2).svg" alt="" class="icon"></div>
+                src="{{ asset('img/icons/down-arrow(2).svg') }}" alt="" class="icon"></div>
 
         </div>
         <ul class="dropdown-content end-0 flex-column p-0">
@@ -45,7 +45,7 @@
 
         <div class="ms-3 me-2 me-sm-5 basket border border-black  p-2 border-2" id="basket-icon">
             <div class="basket-counter px-2 rounded-4 bg-danger text-white position-absolute end-0" id="basket_counter">0</div>
-            <img class="basket-icon" src="./img/icons/noun-basket-6865168.svg" alt="">
+            <img class="basket-icon" src="{{ asset('img/icons/noun-basket-6865168.svg') }}" alt="">
         </div>
 
         <div id="nav-icon3" class="me-2 me-sm-5">
@@ -118,8 +118,8 @@
     {{-- \ CART / --}}
 
     {{ $javaScript }}
-    <script src="js/basket.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/basket.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

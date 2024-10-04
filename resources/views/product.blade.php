@@ -23,7 +23,7 @@
                         </div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{ $product->shownImg }}"  class="d-block w-100 carousel_image" alt="{{ $product->name }}">
+                            <img src="{{ asset($product->shownImg) }}"  class="d-block w-100 carousel_image" alt="{{ $product->name }}">
                           </div>
 
                           @if (!empty($product->thumbnails))
@@ -37,7 +37,7 @@
 
                         @if (count($product->thumbnails) === 1) 
                             <div class="carousel-item">
-                                <img src="{{ $product->thumbnails[0]->path }}" class="d-block w-100" alt="{{ $product->name }}">
+                                <img src="{{ asset($product->thumbnails[0]->path) }}" class="d-block w-100" alt="{{ $product->name }}">
                             </div>
                         @endif
                         </div>
@@ -55,11 +55,10 @@
                     <div class="row px-3 px-lg-0 " >{!! $product->description !!}</div>
                     <div class="row px-3 px-lg-0 " ><span class="p-0 fs-4 fw-semibold">Fontos!</span>Az epoxy terméket ne tedd ki közvetlen forróságnak, napsütésnek és extrém hidegnek sem, mert ezek mind minőségromláshoz vezethetnek. <br>
                         Tisztítás: nedves, mosószeres ruhával</div>
-                    <div class="row  px-3 px-lg-0  d-flex price-div" >
-                        <div class="col d-flex justify-content-end">Ára:  <span class="ms-1" id="price_span"> {{ $product->price }}</span></div>
-                        <div class="col"><span id="to_basket" class="">Kosárba</span></div> 
+                    <div class="row  px-3 px-lg-0  d-flex price-div mt-5" >
+                        <div class="col d-flex justify-content-end mt-4">Ára:  <span class="ms-1" id="price_span"> {{ $product->price }}</span></div>
+                        <div class="col mt-4"><span id="to_basket" style="background-image: url({{ asset('img/icons/Stacked_blob.svg') }}); background-repeat: no-repeat; background-position: center; padding: 75px; font-size: 19px; cursor: pointer;">Kosárba</span></div> 
                     </div>
-            
                 </div>
             </div>
         </div>
