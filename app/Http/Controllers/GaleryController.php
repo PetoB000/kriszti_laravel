@@ -25,11 +25,15 @@ class GaleryController extends Controller
         return redirect()->back()->with('success', 'Kép(ek) sikeresen feltöltve!');
     }
 
-    public function destroy(Request $request, $id) {
-        $gallery = Gallery::find($id);
-        if ($gallery) {
-            $gallery->delete();
+    public function destroy($id) {
+        $galleryImage = Gallery::findOrFail($id);
+
+        $imagePath = public_path($galleryImage->path);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
-        return redirect()->back()->with('success', 'Kép sikeresen törölve!');
+        $galleryImage->delete();
+
+        return redirect()->back()->with('success', 'Kép sikeresen törölve a galériából!');
     }
 }

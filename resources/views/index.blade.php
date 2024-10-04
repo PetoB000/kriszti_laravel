@@ -18,7 +18,7 @@
                             és egy mindenben támogató férj felesége, sok szeretettel köszöntelek az oldalamon.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <a href="#" class="btn btn-outline-secondary">Olvasd tovább</a>
+                            <a href="/Rólam" class="btn btn-outline-secondary">Olvasd tovább</a>
                         </div>
                     </div>
                 </div>

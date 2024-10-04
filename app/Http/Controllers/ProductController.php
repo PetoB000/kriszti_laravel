@@ -48,11 +48,8 @@ class ProductController extends Controller
         $product->description = $this->replaceLineBreaks($request->input('description'));
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
-
-        // Handle the image uploads
         $this->handleImageUploads($request, $product);
 
-        // Save the product first
         $product->save();
 
         return redirect()->route('admin.index')->with('success', 'Termék sikeresen hozzáadva!');
@@ -74,16 +71,13 @@ class ProductController extends Controller
             $processedImagePath = $this->removeBackgroundAndStore($originalImagePath);
             $product->buying_img = $processedImagePath;
         }
-    
-        // Save the product to get the product ID
+
         $product->save();
-    
-        // Now create the thumbnails
+
         if ($request->hasFile('thumbnails')) {
             foreach ($request->file('thumbnails') as $thumbnail) {
                 $thumbnailName = time() . '-' . $thumbnail->getClientOriginalName();
                 $thumbnail->move(public_path('uploads/products/thumbnails'), $thumbnailName);
-                // Now we can create the thumbnail associated with the product
                 $product->thumbnails()->create(['path' => 'uploads/products/thumbnails/' . $thumbnailName]);
             }
         }
@@ -179,6 +173,10 @@ class ProductController extends Controller
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
+        $imagePath = public_path($product->buying_img);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
         foreach($product->thumbnails as $thumbnail) {
             $imagePath = public_path($thumbnail->path);
             if (file_exists($imagePath)) {
@@ -186,8 +184,9 @@ class ProductController extends Controller
             }
         }
 
+
         $product->delete();
 
-        return redirect()->back()->with('success', 'Category deleted successfully!');
+        return redirect()->back()->with('success', 'Product deleted successfully!');
     }
 }

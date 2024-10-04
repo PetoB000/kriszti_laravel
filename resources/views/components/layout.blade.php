@@ -11,7 +11,7 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="website icon" type="png"
-        href="./img/purple-epoxy-resin-icon-cartoon-circle-vector-45522988-removebg.png">
+        href="{{ asset('./img/purple-epoxy-resin-icon-cartoon-circle-vector-45522988-removebg.png') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/basket.css') }}">
     {{ $css }}
@@ -39,7 +39,7 @@
 
             @foreach ($categories as $category)
                 <li class="dropdown-item mb-1 d-flex bg-custom justify-content-center fs-6 bg-custom border border-black rounded-4  ">
-                    <a href="/Kategória-{{ $category['name'] }}" class="text-black">{{ $category['name'] }}</a></li>
+                    <a href="/Kategória/{{ $category['name'] }}" class="text-black">{{ $category['name'] }}</a></li>
             @endforeach
         </ul>
 

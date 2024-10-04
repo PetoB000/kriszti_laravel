@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:css>
-        <link rel="stylesheet" href="css/products.css">
+        <link rel="stylesheet" href="{{ asset('css/products.css') }}">
     </x-slot:css>
     <x-slot:main>
         <div class="container-fluid px-3 my-5" id="container-fluid">
@@ -11,15 +11,13 @@
                         <div class="carousel-indicators">
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         @if (!empty($product->thumbnails))
-                            @for($i = 1 ; $i < count($product->thumbnails); $i++)
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i + 1 }}"></button>
+                            @for($i = 0 ; $i < count($product->thumbnails); $i++)
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i + 1 }}" aria-label="Slide {{ $i + 2 }}"></button>
                             @endfor
 
                         @endif
 
-                        @if (count($product->thumbnails) === 1) 
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" aria-label="Slide {{ $i + 1 }}"></button>  
-                        @endif
+                        
                         </div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
@@ -27,19 +25,15 @@
                           </div>
 
                           @if (!empty($product->thumbnails))
-                            @for ($i = 1;  $i < count($product->thumbnails); $i++)
+                            @for ($i = 0;  $i < count($product->thumbnails); $i++)
                                 <div class="carousel-item  ">
-                                    <img src="{{ $product->thumbnails[$i]->path }}" class="d-block w-100 carousel_image" alt="{{ $product->name }}">
+                                    <img src="{{ asset($product->thumbnails[$i]->path) }}" class="d-block w-100 carousel_image" alt="{{ $product->name }}">
                                 </div>
                             @endfor
                               
                           @endif
 
-                        @if (count($product->thumbnails) === 1) 
-                            <div class="carousel-item">
-                                <img src="{{ asset($product->thumbnails[0]->path) }}" class="d-block w-100" alt="{{ $product->name }}">
-                            </div>
-                        @endif
+                        
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,6 +62,6 @@
         <div class="d-none" id="pPrice">{{ $product->price }}</div>
     </x-slot:main>
     <x-slot:javaScript>
-        <script src="js/products.js"></script>
+        <script src="{{ asset('js/products.js') }}"></script>
     </x-slot:javaScript>
 </x-layout>

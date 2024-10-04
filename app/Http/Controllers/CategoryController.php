@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Log;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -70,7 +71,11 @@ class CategoryController extends Controller
 
     public function destroy($id) {
         $category = Category::findOrFail($id);
-
+        $category->load('products');
+        $productController = new ProductController;
+        foreach($category->products as $product) {
+            $productController->destroy($product->id);
+        }
         $imagePath = public_path($category->cover_image);
         if (file_exists($imagePath)) {
             unlink($imagePath);

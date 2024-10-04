@@ -130,7 +130,7 @@
 
         {{-- GALÉRIA --}}
 
-        <div class="container" id="gallery">
+        <div class="container d-none" id="gallery">
             <div class="container-fluid">
                 <div class="row d-flex flex-column ">
                     <div class="col text-center my-5 py-2 bg-secondary text-white rounded rounded-3">Galéria kép feltöltés:</div>
@@ -152,16 +152,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col text-center my-5 py-2 bg-secondary text-white rounded rounded-3">Galéria kép feltöltés:</div>
-                    <div class="row">
+                    <div class="row row-cols-2 row-cols-md-5">
                         @foreach($galleryImages as $galleryImage)
                             <div class="col mb-4">
                                 <div class="card">
-                                    <img src="{{ $galleryImage->path }}" class="card-img-top gallery_img" alt="Galéria kép">
+                                    <img src="{{ $galleryImage->path }}" class="card-img-top card_img" alt="Galéria kép">
                                     <div class="card-body">
                                         <form action="{{ route('gallery.destroy', $galleryImage->id) }}" method="POST" onsubmit="return confirm('Biztosan kitörlöd a képet a galériából?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Törlés</button>
+                                            <button type="submit" class="btn d-flex mx-auto btn-danger">Törlés</button>
                                         </form>
                                     </div>
                                 </div>

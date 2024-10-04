@@ -42,7 +42,5 @@ Route::middleware([CheckAdmin::class, 'auth'])->prefix('admin')->group(function 
     // Galery routes
     Route::post('gallery/store', [GaleryController::class, 'store'])->name('gallery.store');
     Route::delete('/gallery/{gallery}', [GaleryController::class, 'destroy'])->name('gallery.destroy');
-
-
 });
 

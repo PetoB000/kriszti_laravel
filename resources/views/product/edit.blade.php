@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-slot:css></x-slot:css>
     <x-slot:main>
-        <div class="container">
+        <div class="container mb-5">
             <h2>Termék módositása: {{ $product->name }}</h2>
             <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -40,7 +40,7 @@
 
                 <div class="mb-3">
                     <label for="thumbnails" class="form-label">További termék képek:</label>
-                    <input type="file" name="thumbnails[]" id="thumbnails" class="form-control">
+                    <input type="file" name="thumbnails[]" id="thumbnails" class="form-control" multiple>
                     <small class="form-text text-muted d-flex">Jelenlegi képek: 
                         @foreach($product->thumbnails as $thumbnail)
                             <div class="form-check d-flex flex-column">
